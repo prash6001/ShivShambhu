@@ -29,6 +29,7 @@ import com.pjadhav.myapplication.events.FragmentEvent;
 import com.pjadhav.myapplication.events.GlobalBus;
 import com.pjadhav.myapplication.fragments.ClipListFragment;
 import com.pjadhav.myapplication.fragments.DailyQuotesFragment;
+import com.pjadhav.myapplication.fragments.DonateAppFragment;
 import com.pjadhav.myapplication.fragments.HomeFragment;
 import com.pjadhav.myapplication.utils.Constants;
 import com.pjadhav.myapplication.utils.Utils;
@@ -288,6 +289,11 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, clipListFragment).commit();
                 toolbar_title.setText("Clip List");
                 return clipListFragment;
+            case 4:
+                DonateAppFragment donateAppFragment = DonateAppFragment.newInstance(this.res);
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, donateAppFragment).commit();
+                toolbar_title.setText("Donate app");
+                return donateAppFragment;
             default:
                 return null;
                 }
@@ -304,6 +310,8 @@ public class MainActivity extends AppCompatActivity implements ViewAnimator.View
                 return replaceFragment(screenShotable,position, 2);
             case Utils.PAINT:
                 return replaceFragment(screenShotable,position, 3);
+            case Utils.CASE:
+                return replaceFragment(screenShotable,position, 4);
             default:
                 return replaceFragment(screenShotable, position, 0);
         }
